@@ -1,5 +1,5 @@
-# KoronaPanel
-Aplikacja na konkurs HackHeroes
+# HPanel
+Aplikacja na konkurs HackHeroes - HealthPanel
 
 # Wielka ~~Improwizacja~~ Instalacja
 - Instalujemy apkę o nazwie GIT: https://github.com/git-for-windows/git/releases/download/v2.28.0.windows.1/Git-2.28.0-64-bit.exe
