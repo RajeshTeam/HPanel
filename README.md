@@ -6,8 +6,8 @@ Aplikacja na konkurs HackHeroes
 - Instalujemy apkę do zarządzania środowiskiem Node: https://github.com/coreybutler/nvm-windows/releases/download/1.1.7/nvm-setup.zip
 - Odpalamy wiersz polecenia i przechodzimy do pulpitu ("cd Desktop")
 - Wklepujemy kolejno:
-  - git clone https://github.com/RajeshTeam/KoronaPanel (wyświetli komunikat o podaniu hasła itd. Kopiuje to repo tego kodu)
-  - cd KoronaPanel
+  - git clone https://github.com/RajeshTeam/HPanel (wyświetli komunikat o podaniu hasła itd. Kopiuje to repo tego kodu)
+  - cd HPanel
   - nvm install 14.13.1 (instalujemy tym Node, łatwo i przyjemnie)
   - npm install (komenda npm, która pobiera paczki dla naszej apki
 - Żeby odpalić apkę, wpisujemy "node index.js". Apka będzie widoczna, gdy w przeglądarce w pasku adresu wpiszemy "localhost".
