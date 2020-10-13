@@ -1,0 +1,23 @@
+{
+  "name": "koronapanel",
+  "version": "1.0.0",
+  "description": "Aplikacja do podglądu informacji o koronawirusie COVID-19.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RajeshTeam/KoronaPanel.git"
+  },
+  "author": "LO3",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RajeshTeam/KoronaPanel/issues"
+  },
+  "homepage": "https://github.com/RajeshTeam/KoronaPanel#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "twitter": "^1.7.1"
+  }
+}
