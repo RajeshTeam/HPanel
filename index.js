@@ -1,38 +1,33 @@
 const express = require('express');
-const config = require("./config.json");
+const tools = require('./tools');
 const app = express();
-let status = [];
-let skippedID = [];
-const Twitter = require('twitter');
+const config = require("./config.json");
 
 
-const client = new Twitter({
-    consumer_key: 'OqDE29qM2plVw27v69DA5RRIE',
-    consumer_secret: 'F8u87yfTPoSUCHEcAg3D75i1gIGrS069DTNnwsaCGvlgOAbHGP',
-    bearer_token: 'AAAAAAAAAAAAAAAAAAAAAD5nIgEAAAAAVPTl3%2FUCFXYgiF4pxipWRJO%2B8Bw%3D7BhogyMn5PWUwWUhyZwYvhblXy22f0hQMPKlwssILOE9nQD8aX'
+app.set('view engine', 'ejs');
+app.engine("html", require("ejs").renderFile);
+app.use('/static', express.static('./views'));
+
+
+global.status = [];
+global.statusTime = "";
+global.skippedID = [];
+
+//czynności i interwały przy odpalaniu apki
+tools.refreshMZGOV();
+setInterval(tools.refreshMZGOV, 1000 * 60 * 30); //co 30 minut pobiera info z twittera MZ
+
+
+//endpointy strony
+app.get('/', async (req, res) => {
+    res.render("index.ejs");
 });
 
-
-app.get('/', async (req, res) => {
-    res.send(status);
-    const params = {screen_name: 'MZ_GOV_PL', count: 10, tweet_mode: "extended"};
-    client.get('statuses/user_timeline', params, function (error, tweets, response) {
-        if (!error) {
-            let next = false;
-            tweets.reverse()
-            tweets.forEach(t => {
-                if (t.full_text.includes("Mamy ") && !skippedID.includes(t.id)) {
-                    status.push(t.full_text);
-                    skippedID.push(t.id);
-                    return next = true;
-                }
-                if (next) {
-                    status.push(t.full_text);
-                    skippedID.push(t.id);
-                    if (t.full_text.includes("Liczba zakażonych koronawirusem:")) next = false;
-                }
-            });
-        }
+app.get('/corona', async (req, res) => {
+    res.render("corona.ejs", {
+        twitter: status?.join(' ').replace(/\n/g, ' '),
+        size: status[0]?.match(new RegExp("Mamy " + "(.*)" + " nowych"))[1],
+        statusTime
     });
 });
 

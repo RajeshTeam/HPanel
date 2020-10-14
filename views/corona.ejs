@@ -1,0 +1,41 @@
+<%- include ("../partials/head.ejs") %>
+<%- include ("../partials/navbar.ejs") %>
+<div class="view"
+     style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/93.jpg'); background-repeat: no-repeat; background-size: cover;">
+    <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+        <!-- Mask & flexbox options-->
+        <div class="container">
+
+            <h1 style="font-size: 10rem"><%=size%></h1>
+            <div class="grid">
+                <div class="grid-sizer col-md-4"></div>
+                <div class="grid-item col-md-4 mb-4">
+                    <div class="card bg-dark">
+                        <div class="card-body ">
+                            <h5 class="card-title white-text">Ostatnia dzienna liczba zakażeń</h5>
+                            <h6 class="card-text white-text">Data ostatniej aktualizacji: <%=statusTime%></h6>
+                            <a href="#!" class="card-link mr-3">Card link</a>
+                            <a href="#!" class="card-link ml-0">Another link</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-item col-md-7 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Szczegółowe dane</h5>
+                            <p class="card-text"><%= twitter %></p>
+                            <button class="btn btn-primary" onclick="window.open('https://twitter.com/MZ_GOV_PL')"><i class="fas fa-twitter mr-1"></i>Oficjalny Twitter Ministerstwa Zdrowia</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Mask & flexbox options-->
+
+</div>
+
+<!--Footer-->
+<%- include ("../partials/footer.ejs") %>
