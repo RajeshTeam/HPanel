@@ -22,6 +22,9 @@ setInterval(tools.refreshMZGOV, 1000 * 60 * 30); //co 30 minut pobiera info z tw
 app.get('/', async (req, res) => {
     res.render("index.ejs");
 });
+app.get('/test', async (req, res) => {
+    res.render("test.ejs");
+});
 
 app.get('/corona', async (req, res) => {
     res.render("corona.ejs", {

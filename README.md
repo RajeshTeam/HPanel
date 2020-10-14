@@ -10,7 +10,7 @@ Aplikacja na konkurs HackHeroes - HealthPanel
   - cd HPanel
   - nvm install 14.13.1 (instalujemy tym Node, łatwo i przyjemnie)
   - npm install (komenda npm, która pobiera paczki dla naszej apki
-- Żeby odpalić apkę, wpisujemy "node index.js". Apka będzie widoczna, gdy w przeglądarce w pasku adresu wpiszemy "localhost".
+- Żeby odpalić apkę, wpisujemy "node index.js". Apka będzie widoczna, gdy w przeglądarce w pasku adresu wpiszemy "localhost:8080".
 - Edytujcie apkę czymkolwiek, może być Paintem.
 - Jeżeli wasz edytor nie ogarnia Gita lub jest to dla was nieczytelne, wysyłanie zmian robi się tak:
   - git add . (dodaje wszystkie pliki)

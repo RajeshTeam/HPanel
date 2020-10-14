@@ -1,15 +1,15 @@
 <%- include ("../partials/head.ejs") %>
 <%- include ("../partials/navbar.ejs") %>
 <div class="view"
-     style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/93.jpg'); background-repeat: no-repeat; background-size: cover;">
+     style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/93.jpg'); background-repeat: no-repeat; background-size: cover">
     <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
         <!-- Mask & flexbox options-->
         <div class="container">
 
-            <h1 style="font-size: 10rem"><%=size%></h1>
             <div class="grid">
                 <div class="grid-sizer col-md-4"></div>
                 <div class="grid-item col-md-4 mb-4">
+                    <h1 style="font-size: 10rem"><%=size%></h1>
                     <div class="card bg-dark">
                         <div class="card-body ">
                             <h5 class="card-title white-text">Ostatnia dzienna liczba zakażeń</h5>
@@ -34,8 +34,6 @@
     </div>
 </div>
 <!-- Mask & flexbox options-->
-
-</div>
 
 <!--Footer-->
 <%- include ("../partials/footer.ejs") %>
