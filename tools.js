@@ -20,6 +20,7 @@ module.exports = {
                     if (t.full_text.includes("Mamy ") && !skippedID.includes(t.id)) {
                         stats.content = [];
                         stats.content.push(t.full_text);
+                        stats.id = t.id_str;
                         stats.time = moment(t.created_at, 'dd MMM DD HH:mm:ss ZZ YYYY').locale("pl").format('D MMMM YYYY, HH:mm');
                         skippedID.push(t.id);
                         return next = true;

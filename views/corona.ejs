@@ -3,33 +3,56 @@
 <section>
     <div class="container">
         <div class="row" style="margin-top: 6rem">
-                <div class="grid-item col-md-4 mb-4">
-                    <h1 style="font-size: 10rem"><%= size ;%></h1>
-                    <div class="card bg-dark">
-                        <div class="card-body ">
-                            <h5 class="card-title white-text">Ostatnia dzienna liczba zakażeń</h5>
-                            <h6 class="card-text white-text">Data ostatniej aktualizacji: <%= time ;%></h6>
-                            <a href="#!" class="card-link mr-3">Card link</a>
-                            <a href="#!" class="card-link ml-0">Another link</a>
-                        </div>
+            <div class="grid-item col-md-4 mb-4">
+                <h1 style="font-size: 10rem"><%= size; %></h1>
+                <div class="card bg-dark">
+                    <div class="card-body ">
+                        <h5 class="card-title white-text">Ostatnia dzienna liczba zakażeń</h5>
+                        <h6 class="card-text white-text">Data ostatniej aktualizacji: <%= time; %></h6>
                     </div>
                 </div>
-                <div class="grid-item col-md-8 mb-4">
-                    <div class="card bg-dark">
-                        <div class="card-body">
-                            <h5 class="card-title text-white">Szczegółowe dane</h5>
-                            <p class="card-text white-text"><%= twitter ;%></p>
+            </div>
+            <div class="grid-item col-md-8 mb-4">
+                <div class="card bg-dark">
+                    <div class="card-body">
+                        <h5 class="card-title text-white">Szczegółowe dane</h5>
+                        <p class="card-text white-text"><%= twitter; %></p>
+                        <button class="btn btn-primary btn-block"
+                                onclick="window.open('https://twitter.com/MZ_GOV_PL/status/<%= twitterID %>')"><i
+                                    class="fab fa-twitter mr-3"></i>Przejdź do statusu na Twitterze
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item col-md-12 mb-4">
+                <div class="card bg-dark align-items-center">
+                    <ul class="list-group list-group-flush bg-dark align-items-center">
+                        <li class="list-group-item bg-dark">
                             <button class="btn btn-primary" onclick="window.open('https://twitter.com/MZ_GOV_PL')"><i
-                                        class="fab fa-twitter mr-lg-3" ></i>Oficjalny Twitter Ministerstwa Zdrowia
+                                        class="fab fa-twitter mr-3"></i>Twitter Ministerstwa Zdrowia
                             </button>
-                        </div>
-                    </div>
+                        </li>
+                        <li class="list-group-item bg-dark align-items-center">
+                            <button class="btn" style="background: #3b5998; color: white"
+                                    onclick="window.open('https://www.facebook.com/kancelaria.premiera/')"><i
+                                        class="fab fa-facebook mr-3"></i>Facebook Kancelarii Premiera (transmisje
+                                itd.)
+                            </button>
+                        </li>
+                        <li class="list-group-item bg-dark align-items-center">
+                            <button class="btn" style="background: #0F9D58; color: white"
+                                    onclick="window.open('https://news.google.com/covid19/map?hl=pl&mid=%2Fm%2F05qhw&gl=PL&ceid=PL%3Apl')">
+                                <i
+                                        class="fab fa-google mr-3"></i>Mapa zakażeń od Google
+                            </button>
+                        </li>
+                    </ul>
                 </div>
-
             </div>
         </div>
+    </div>
 </section>
-    <!-- Mask & flexbox options-->
+<!-- Mask & flexbox options-->
 
-    <!--Footer-->
+<!--Footer-->
 <%- include ("../partials/footer.ejs") %>

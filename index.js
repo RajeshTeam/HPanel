@@ -27,7 +27,8 @@ app.get('/corona', async (req, res) => {
     res.render("corona.ejs", {
         twitter: stats.finalContent,
         size: stats.size,
-        time: stats.time
+        time: stats.time,
+        twitterID: stats.id
     });
 });
 
