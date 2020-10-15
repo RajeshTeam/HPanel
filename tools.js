@@ -8,6 +8,7 @@ const client = new Twitter({        //definiujemy klienta Twittera, pobieranie i
 });
 module.exports = {
     refreshMZGOV: function () {
+        console.log("aktualizacja!");
         const params = {screen_name: 'MZ_GOV_PL', count: 10, tweet_mode: "extended"}; //nie można na żywo pobierać danych z Twitterka, więc pobieramy co jakiś czas 10 ostatnich
         client.get('statuses/user_timeline', params, function (error, tweets) {
             if (!error) {
@@ -15,6 +16,7 @@ module.exports = {
                 tweets.reverse();
                 tweets.forEach(t => {
                     if (t.full_text.includes("Mamy ") && !skippedID.includes(t.id)) {
+                        status = [];
                         status.push(t.full_text);
                         statusTime = moment(t.created_at, 'dd MMM DD HH:mm:ss ZZ YYYY').locale("pl").format('D MMMM YYYY, HH:mm');
                         skippedID.push(t.id);
@@ -26,7 +28,7 @@ module.exports = {
                         if (t.full_text.includes("Liczba zakażonych koronawirusem:")) next = false;
                     }
                 });
-            }
+            } else console.log(error);
         });
     }
 };

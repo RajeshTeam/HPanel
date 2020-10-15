@@ -15,8 +15,8 @@ global.skippedID = [];
 
 //czynności i interwały przy odpalaniu apki
 tools.refreshMZGOV();
-setInterval(tools.refreshMZGOV, 1000 * 60 * 30); //co 30 minut pobiera info z twittera MZ
-
+setInterval(tools.refreshMZGOV, 1000); //co 30 minut pobiera info z twittera MZ
+//1000 * 60 * 30
 
 //endpointy strony
 app.get('/', async (req, res) => {

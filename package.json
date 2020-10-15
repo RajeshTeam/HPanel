@@ -1,21 +1,21 @@
 {
   "name": "koronapanel",
-  "version": "1.0.0",
-  "description": "Aplikacja do podglądu informacji o koronawirusie COVID-19.",
+  "version": "0.0.4",
+  "description": "Źródło wyselekcjonowanych informacji i ciekawostek o zdrowiu fizycznym i psychicznym.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RajeshTeam/KoronaPanel.git"
+    "url": "git+https://github.com/RajeshTeam/HPanel.git"
   },
   "author": "LO3",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/RajeshTeam/KoronaPanel/issues"
+    "url": "https://github.com/RajeshTeam/HPanel/issues"
   },
-  "homepage": "https://github.com/RajeshTeam/KoronaPanel#readme",
+  "homepage": "https://github.com/RajeshTeam/HPanel#readme",
   "dependencies": {
     "ejs": "^3.1.5",
     "express": "^4.17.1",
