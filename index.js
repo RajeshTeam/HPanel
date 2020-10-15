@@ -2,15 +2,12 @@ const express = require('express');
 const tools = require('./tools');
 const app = express();
 const config = require("./config.json");
-
+const fs = require("fs");
 
 app.set('view engine', 'ejs');
 app.engine("html", require("ejs").renderFile);
 app.use('/static', express.static('./views'));
 
-
-global.status = [];
-global.statusTime = "";
 global.skippedID = [];
 
 //czynności i interwały przy odpalaniu apki
@@ -26,10 +23,11 @@ app.get('/test', async (req, res) => {
 });
 
 app.get('/corona', async (req, res) => {
+    const stats = JSON.parse(await fs.readFileSync("./data/corona.json"))
     res.render("corona.ejs", {
-        twitter: status?.join(' ').replace(/\n/g, ' '),
-        size: status[0]?.match(new RegExp("Mamy " + "(.*)" + " nowych"))[1],
-        statusTime
+        twitter: stats.finalContent,
+        size: stats.size,
+        time: stats.time
     });
 });
 
