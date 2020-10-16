@@ -1,0 +1,46 @@
+<%- include ("../partials/head.ejs") %>
+<%- include ("../partials/navbar.ejs") %>
+<section>
+    <div class="container">
+        <div class="row" style="margin-top: 6rem">
+            <div class="grid-item col-12 mb-4">
+                <div class="card bg-dark">
+                    <div class="card-body">
+                        <h5 class="card-title text-white text-center">Możesz sobie zrobić przerwę już za:</h5>
+                        <h1 id="demo" style="word-wrap: break-word" class="display-1 text-center text-white"></h1>
+                        <button class="btn btn-primary btn-block"
+                                onclick="window.clearInterval(window.interval); runTimer(Date.now() + (1000 * 60 * 30) + 4)"><i
+                                    class="far fa-clock mr-3"></i>Zresetuj minutnik!
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item col-md-12 mb-4">
+                <div class="card bg-dark align-items-center">
+                    <div class="card-body">
+                        <h5 class="card-title white-text">tutaj wleci opis od Wiki</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const runTimer = function (countDownDate = Date.now() + (1000 * 60 * 30) + 2000) { //2000 to poprawka na czas ładowania
+        window.interval = setInterval(function () {
+            const now = Date.now();
+            const distance = countDownDate - now;
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            document.getElementById("demo").innerHTML = minutes + "min " + seconds + "sek ";
+            if (distance < 0) {
+                window.clearInterval(window.interval)
+                document.getElementById("demo").innerHTML = "Czas na przerwę :D";
+            }
+        }, 1000);
+    };
+    runTimer()
+</script>
+
+<%- include ("../partials/footer.ejs") %>

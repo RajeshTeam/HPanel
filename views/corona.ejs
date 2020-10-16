@@ -4,11 +4,12 @@
     <div class="container">
         <div class="row" style="margin-top: 6rem">
             <div class="grid-item col-md-4 mb-4">
-                <h1 style="font-size: 10rem"><%= size; %></h1>
+                <h1 style="word-wrap: break-word" class="display-1 text-center"><%= size; %></h1>
                 <div class="card bg-dark">
                     <div class="card-body ">
                         <h5 class="card-title white-text">Ostatnia dzienna liczba zakażeń</h5>
-                        <h6 class="card-text white-text">Data ostatniej aktualizacji: <%= time; %></h6>
+                        <h6 class="card-text white-text">Data ostatniej publikacji statystyk:<br><%= time; %></h6>
+                        <h6 class="card-text white-text">Data ostatniej aktualizacji w HealthPanel:<br><%= lastTime; %></h6>
                     </div>
                 </div>
             </div>
