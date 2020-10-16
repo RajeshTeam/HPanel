@@ -9,7 +9,8 @@
                         <h5 class="card-title text-white text-center">Możesz sobie zrobić przerwę już za:</h5>
                         <h1 id="demo" style="word-wrap: break-word" class="display-1 text-center text-white"></h1>
                         <button class="btn btn-primary btn-block"
-                                onclick="window.clearInterval(window.interval); runTimer(Date.now() + (1000 * 60 * 30) + 4)"><i
+                                onclick="window.clearInterval(window.interval); runTimer(Date.now() + (1000 * 60 * 30) + 4)">
+                            <i
                                     class="far fa-clock mr-3"></i>Zresetuj minutnik!
                         </button>
                     </div>
@@ -27,7 +28,7 @@
 </section>
 
 <script>
-    const runTimer = function (countDownDate = Date.now() + (1000 * 60 * 30) + 2000) { //2000 to poprawka na czas ładowania
+    const runTimer = function (countDownDate = Date.now() + (1000 * 60 * 30) + 2000) {
         window.interval = setInterval(function () {
             const now = Date.now();
             const distance = countDownDate - now;
@@ -35,12 +36,12 @@
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
             document.getElementById("demo").innerHTML = minutes + "min " + seconds + "sek ";
             if (distance < 0) {
-                window.clearInterval(window.interval)
+                window.clearInterval(window.interval);
                 document.getElementById("demo").innerHTML = "Czas na przerwę :D";
             }
         }, 1000);
     };
-    runTimer()
+    runTimer();
 </script>
 
 <%- include ("../partials/footer.ejs") %>
