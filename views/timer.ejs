@@ -1,5 +1,8 @@
 <%- include ("../partials/head.ejs") %>
 <%- include ("../partials/navbar.ejs") %>
+<script>
+    let paused = false;
+</script>
 <section>
     <div class="container">
         <div class="row" style="margin-top: 6rem">
@@ -8,19 +11,30 @@
                     <div class="card-body">
                         <h5 class="card-title text-white text-center">Możesz sobie zrobić przerwę już za:</h5>
                         <h1 id="demo" style="word-wrap: break-word" class="display-1 text-center text-white"></h1>
-                        <button class="btn btn-primary btn-block"
-                                onclick="window.clearInterval(window.interval); runTimer(Date.now() + (1000 * 60 * 30) + 4)">
-                            <i
-                                    class="far fa-clock mr-3"></i>Zresetuj minutnik!
-                        </button>
+                        <div class="row">
+                            <div class="col-6">
+                                <button class="btn btn-primary btn-block"
+                                        onclick="window.clearInterval(window.interval); runTimer(Date.now() + (1000 * 60 * 30) + 4)">
+                                    <i
+                                            class="far fa-clock mr-3"></i>Zresetuj minutnik!
+                                </button>
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-primary btn-block"
+                                        onclick="paused = !paused">
+                                    <i
+                                            class="fas fa-pause mr-3"></i>Wstrzymaj minutnik!
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="grid-item col-md-12 mb-4">
-                <div class="card bg-dark align-items-center">
-                    <div class="card-body">
-                        <h5 class="card-title white-text">tutaj wleci opis od Wiki</h5>
-                    </div>
+        </div>
+        <div class="grid-item col-md-12 mb-4">
+            <div class="card bg-dark align-items-center">
+                <div class="card-body">
+                    <h5 class="card-title white-text">tutaj wleci opis od Wiki</h5>
                 </div>
             </div>
         </div>
@@ -30,6 +44,7 @@
 <script>
     const runTimer = function (countDownDate = Date.now() + (1000 * 60 * 30) + 2000) {
         window.interval = setInterval(function () {
+            if (paused) return countDownDate += 1000;
             const now = Date.now();
             const distance = countDownDate - now;
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -38,6 +53,7 @@
             if (distance < 0) {
                 window.clearInterval(window.interval);
                 document.getElementById("demo").innerHTML = "Czas na przerwę :D";
+                new Audio('./static/alarm.mp3').play();
             }
         }, 1000);
     };
