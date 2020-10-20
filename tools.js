@@ -2,11 +2,15 @@ const config = require("./config.json");
 const fs = require("fs");
 const Twitter = require('twitter');
 const moment = require("moment");
+const fetch = require("node-fetch");
+const parseXML = require("fast-xml-parser");
 const client = new Twitter({        //definiujemy klienta Twittera, pobieranie info z MZ
     consumer_key: config.consumer_key,
     consumer_secret: config.consumer_secret,
     bearer_token: config.bearer_token
 });
+const channels = require("./data/channels.json");
+
 module.exports = {
     refreshMZGOV: function () {
         try {
@@ -56,6 +60,31 @@ module.exports = {
                 }
             });
 
+        } catch (e) {
+            console.log(e);
+        }
+    },
+    retrieveNewVideos: async function () {
+        try {
+            const ids = channels.IDs;
+            for (const id of ids) {
+                //obręb kanału
+                let data = await fetch(`https://www.youtube.com/feeds/videos.xml?channel_id=${id}`);
+                if (data.status !== 200) return;
+                data = await data.text();
+                const parsed = await parseXML.parse(data.toString('utf8'), {}, true);
+                let videos = [];
+                parsed.feed.entry.forEach(video => {
+                    //obręb filmu
+                    videos.push({id: video["yt:videoId"], title: video.title}); //urle: "https://www.youtube.com/watch?v=
+                });
+                const obj = {
+                    id,
+                    name: parsed.feed.title,
+                    videos
+                };
+                fs.writeFileSync(`./data/${id}.json`, JSON.stringify(obj));
+            }
         } catch (e) {
             console.log(e);
         }
