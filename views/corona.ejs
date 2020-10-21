@@ -9,7 +9,8 @@
                     <div class="card-body ">
                         <h5 class="card-title white-text">Ostatnia dzienna liczba zakażeń</h5>
                         <h6 class="card-text white-text">Data ostatniej publikacji statystyk:<br><%= time; %></h6>
-                        <h6 class="card-text white-text">Data ostatniej aktualizacji w HealthPanel:<br><%= lastTime; %></h6>
+                        <h6 class="card-text white-text">Data ostatniej aktualizacji w HealthPanel:<br><%= lastTime; %>
+                        </h6>
                     </div>
                 </div>
             </div>
@@ -28,6 +29,12 @@
             <div class="grid-item col-md-12 mb-4">
                 <div class="card bg-dark align-items-center">
                     <ul class="list-group list-group-flush bg-dark align-items-center">
+                        <li class="list-group-item bg-dark">
+                            <button class="btn" style="background: white; color: black"
+                                    onclick="window.open('https://gov.pl/zasadybezpieczenstwa')"><i
+                                        class="fas fa-book mr-3"></i>Aktualne obostrzenia w poszczególnych powiatach
+                            </button>
+                        </li>
                         <li class="list-group-item bg-dark">
                             <button class="btn btn-primary" onclick="window.open('https://twitter.com/MZ_GOV_PL')"><i
                                         class="fab fa-twitter mr-3"></i>Twitter Ministerstwa Zdrowia

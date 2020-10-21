@@ -15,7 +15,7 @@ module.exports = {
     refreshMZGOV: function () {
         try {
             let stats = {};
-            const params = {screen_name: 'MZ_GOV_PL', count: 10, tweet_mode: "extended"}; //nie można na żywo pobierać danych z Twitterka, więc pobieramy co jakiś czas 10 ostatnich
+            const params = {screen_name: 'MZ_GOV_PL', count: 20, tweet_mode: "extended"}; //nie można na żywo pobierać danych z Twitterka, więc pobieramy co jakiś czas 10 ostatnich
             client.get('statuses/user_timeline', params, function (error, tweets) {
                 if (!error) {
                     let next = false;
@@ -88,5 +88,13 @@ module.exports = {
         } catch (e) {
             console.log(e);
         }
+    },
+    readAllChannels: async function () {
+        const channels = require("./data/channels.json");
+        let newChannels = [];
+        for (const id of channels.IDs) {
+            newChannels.push(JSON.parse(await fs.readFileSync(`./data/${id}.json`)));
+        }
+        return newChannels;
     }
 };

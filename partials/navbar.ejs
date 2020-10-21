@@ -25,5 +25,5 @@
 </nav>
 <script>
     const element = document.getElementById(window.location.pathname.replace("/", "h"));
-    element.classList.add("active");
+    if(element) element.classList.add("active");
 </script>
