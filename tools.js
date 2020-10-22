@@ -53,7 +53,13 @@ module.exports = {
             const params = {screen_name: 'MZ_GOV_PL', count: 1, tweet_mode: "extended"}; //jeżeli ostatni twitter jest nowy, to odświeżamy całość
             client.get('statuses/user_timeline', params, async function (error, tweets) {
                 if (!error) {
-                    const stats = JSON.parse(await fs.readFileSync("./data/corona.json"));
+                    let file;
+                    try {
+                        file = await fs.readFileSync("./data/corona.json");
+                    } catch (e) {
+                        file = "{}";
+                    }
+                    const stats = JSON.parse(file || "{}");
                     stats.lastTime = moment().locale("pl").format('D MMMM YYYY, HH:mm');
                     await fs.writeFileSync("./data/corona.json", JSON.stringify(stats));
                     if (!skippedID.includes(tweets[0].id)) require("./tools").refreshMZGOV();
