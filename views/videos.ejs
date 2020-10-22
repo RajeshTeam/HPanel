@@ -1,70 +1,44 @@
 <%- include ("../partials/head.ejs") %>
 <%- include ("../partials/navbar.ejs") %>
+
+
 <section>
-    <div class="container">
-        <div class="row" style="margin-top: 6rem">
-
-            <div class="grid-item col-md-12 mb-4">
-                <% videos.forEach(user => { %>
-                    <div class="my-5 text-center container">
-                        <div class="row mb-2">
-                            <div class="col text-center">
-                                <h1>Carousel with outer controls</h1>
-                                <p class="lead">Does what it says on the tin.</p>
+    <div class="container" style="margin-top: 3rem">
+        <% let id = 0; %>
+        <% videos.forEach(author => { %>
+            <div id="carID<%= id ;%>" class="carousel slide" data-ride="carousel"
+                 style="margin-top: 3rem; margin-bottom: 3rem">
+                <ol class="carousel-indicators">
+                    <li data-target="#carID<%= id ;%>" data-slide-to="0" class="active"></li>
+                    <li data-target="#carID<%= id ;%>" data-slide-to="1"></li>
+                    <li data-target="#carID<%= id ;%>" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <% let first = true; %>
+                    <% author.videos.forEach(video => { %>
+                        <div class="carousel-item <% if(first) {first = false; %>active <% } %>">
+                            <img class="d-block w-100" src="http://i3.ytimg.com/vi/<%= video.id ;%>/maxresdefault.jpg"
+                                 alt="First slide">
+                            <div class="carousel-caption d-none d-md-block"
+                                 style=" background-color: rgba(55,55,55,0.8);">
+                                <h5><%= video.title ;%></h5>
+                                <p>PLACEHOLDER</p>
                             </div>
                         </div>
-                        <div class="row d-flex align-items-center">
-                            <div class="col-1 d-flex align-items-center justify-content-center">
-                                <a href="#carouselExampleIndicators" role="button" data-slide="prev">
-                                    <div class="carousel-nav-icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129"
-                                             xmlns:xlink="http://www.w3.org/1999/xlink">
-                                            <path d="m88.6,121.3c0.8,0.8 1.8,1.2 2.9,1.2s2.1-0.4 2.9-1.2c1.6-1.6 1.6-4.2 0-5.8l-51-51 51-51c1.6-1.6 1.6-4.2 0-5.8s-4.2-1.6-5.8,0l-54,53.9c-1.6,1.6-1.6,4.2 0,5.8l54,53.9z"/>
-                                        </svg>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-10">
-                                <!--Start carousel-->
-                                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                                    <div class="carousel-inner w-100">
-                                        <div class="carousel-item">
-                                            <div class="row">
-                                                <div style="background-image:url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/46992/flexfun01.jpg');"
-                                                     class="col-12 col-md d-flex align-items-center justify-content-center">
-                                                </div>
-                                                <div style="background-image:url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/46992/flexfun03.jpg');"
-                                                     class="col-12 col-md d-flex align-items-center justify-content-center">
-
-                                                </div>
-                                                <div style="background-image:url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/46992/flexfun06.jpg');"
-                                                     class="col-12 col-md d-flex align-items-center justify-content-center">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-1 d-flex align-items-center justify-content-center"><a
-                                        href="#carouselExampleIndicators" data-slide="next">
-                                    <div class="carousel-nav-icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129"
-                                             xmlns:xlink="http://www.w3.org/1999/xlink">
-                                            <path d="m40.4,121.3c-0.8,0.8-1.8,1.2-2.9,1.2s-2.1-0.4-2.9-1.2c-1.6-1.6-1.6-4.2 0-5.8l51-51-51-51c-1.6-1.6-1.6-4.2 0-5.8 1.6-1.6 4.2-1.6 5.8,0l53.9,53.9c1.6,1.6 1.6,4.2 0,5.8l-53.9,53.9z"/>
-                                        </svg>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                <% }) %>
+                    <% }); %>
+                </div>
+                <a class="carousel-control-prev" href="#carID<%= id ;%>" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carID<%= id ;%>" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
-        </div>
+            <% id++; %>
+        <% }); %>
     </div>
 </section>
-<script>
-
-</script>
-
 
 <%- include ("../partials/footer.ejs") %>

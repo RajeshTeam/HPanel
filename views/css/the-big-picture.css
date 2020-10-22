@@ -10,14 +10,3 @@ body {
     background-size: cover;
     -o-background-size: cover;
 }
-
-.carousel-nav-icon {
-    height: 48px;
-    width: 48px;
-}
-.carousel-item .col, .col-sm, .col-md {
-    margin: 8px;
-    height: 300px;
-    background-size: cover;
-    background-position: center center;
-    }
