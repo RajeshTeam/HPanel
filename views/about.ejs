@@ -4,78 +4,57 @@
 <section>
 
     <div class="container">
-        <h1 class="my-4 font-weight-bold">Placeholder</h1>
-        <div class="row">
+        <div class="row" style="margin-top: 5rem">
+            <div class="grid-item col-md-6 mb-4">
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <h5 class="card-title">Wybierz motyw tła!</h5>
+                        <p class="card-text text-white">Możesz zmienić sobie tło strony w zależności od swoich
+                            preferencji. Czerwone tło jest najszybsze. :D</p>
+                        <button class="btn  btn-outline-warning"
+                                onclick="document.cookie = 'style=orange; secure'; window.location.reload()">
+                            Tęczowa pomarańcza
+                        </button>
+                        <button class="btn  btn-outline-light"
+                                onclick="document.cookie = 'style=bike; secure'; window.location.reload()">
+                            Rowerek
+                        </button>
+                        <button class="btn btn-outline-secondary"
+                                onclick="document.cookie = 'style=boats; secure'; window.location.reload()">
+                            Łodzie
+                        </button>
+                        <button class="btn  btn-outline-success"
+                                onclick="document.cookie = 'style=trees; secure'; window.location.reload()">
+                            Las <s>Vegas</s> Liściasty
+                        </button>
+                    </div>
+                </div>
+            </div>
 
             <div class="grid-item col-md-6 mb-4">
-                <div class="card">
+                <div class="card bg-dark text-white">
                     <div class="card-body">
-                        <h5 class="card-title">Panel title</h5>
-                        <p class="card-text">Some quick example text to build on the panel title and make up the bulk of
-                            the panel's content.</p>
-                        <a class="card-link">Card link</a>
-                        <a class="card-link">Another link</a>
+                        <h5 class="card-title">Ustaw swoje imię!</h5>
+                        <p class="card-text text-white">Twoje imię zostanie użyte w personalizacji strony głównej!</p>
+                        <form>
+                            <div class="form-group">
+                                <input type="text" class="form-control bg-dark text-white" id="name"
+                                       placeholder="Np. Karol">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block"
+                                    onclick="document.cookie = `name=${document.getElementById('name').value}; secure`">
+                                Zapisz
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
-            <div class="grid-item col-md-6 mb-4">
-                <div class="card">
-                    <div class="card-header">
-                        Quote
-                    </div>
+            <div class="grid-item col-md-12 mb-4">
+                <div class="card bg-dark text-white">
                     <div class="card-body">
-                        <blockquote class="blockquote mb-0">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                            <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source
-                                    Title</cite></footer>
-                        </blockquote>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-item col-md-3 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        This is some text within a panel body.
-                    </div>
-                </div>
-            </div>
-            <div class="grid-item col-md-3 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Panel title</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Panel subtitle</h6>
-                        <p class="card-text">Some quick example text to build on the panel title and make up the bulk of
-                            the panel's content.</p>
-                        <a href="#!" class="card-link mr-3">Card link</a>
-                        <a href="#!" class="card-link ml-0">Another link</a>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-item col-md-3 mb-4">
-                <div class="card bg-dark">
-                    <div class="card-body">
-                        <h5 class="card-title white-text">Statystyki koronawirusa w Polsce</h5>
-                        <p class="card-text white-text">Sprawdź dzienną ilość zakażeń w Polsce, a także uzyskaj
-                            dostęp do innych danych!</p>
-                        <a href="/corona" class="btn btn-sm btn-red">Wejdź</a>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-item col-md-3 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="font-weight-bold mb-3">Panel title</h5>
-                        <p class="mb-0">Some quick example text to build on the panel title and make up the bulk of the
-                            panel's content.</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Cras justo odio</li>
-                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                        <li class="list-group-item">Copyright 2013-2020 Start Bootstrap LLC.</li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#!" class="card-link mr-3">Card link</a>
-                        <a href="#!" class="card-link ml-0">Another link</a>
+                        <h5 class="card-title">Co robi ta stronka?</h5>
+                        <p class="card-text text-white">Placeholder</p>
+
                     </div>
                 </div>
             </div>
@@ -83,12 +62,5 @@
     </div>
 
 </section>
-<script type="text/javascript">
-    $('.grid').masonry({
-        itemSelector: '.grid-item',
-        columnWidth: '.grid-sizer',
-        percentPosition: false
-    });
-</script>
 
 <%- include ("../partials/footer.ejs") %>

@@ -1,7 +1,11 @@
-<body class="d-flex flex-column" style="min-height: 106vh">
-<main class="flex-fill"></main>
-<footer class="bg-dark text-white text-center">Copyright 2020 HealthPanel<br>Autor ikony: Jemis Mali/Iconscut, szablon: Start Bootstrap LLC.</footer>
+<body class="d-flex flex-column min-vh-100">
+<footer class="bg-dark text-white text-center mt-auto">Copyright 2020 HealthPanel<br>Autor ikony: Jemis Mali/Iconscut,
+    szablon: Start Bootstrap LLC.
+</footer>
 </body>
-</body>
+<script>
 
+    document.getElementById("username").innerHTML = "Witaj, " + getCookieValue("name") + "!" || "Witaj, użytkowniku!";
+
+</script>
 </html>
