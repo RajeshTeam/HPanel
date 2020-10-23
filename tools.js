@@ -82,7 +82,8 @@ module.exports = {
                 let videos = [];
                 parsed.feed.entry.forEach(video => {
                     //obręb filmu
-                    videos.push({id: video["yt:videoId"], title: video.title}); //urle: "https://www.youtube.com/watch?v=
+                    const desc = video["media:group"]["media:description"].replaceAll("\n", " ").replaceAll("&#13", " ").slice(0, 200) + " (...)";
+                    videos.push({id: video["yt:videoId"], title: video.title, desc});
                 });
                 const obj = {
                     id,

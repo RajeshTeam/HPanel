@@ -6,7 +6,7 @@ const fs = require("fs");
 
 app.set('view engine', 'ejs');
 app.engine("html", require("ejs").renderFile);
-app.use('/static', express.static('./views'));
+app.use('/static', express.static('./static'));
 
 global.skippedID = [];
 
