@@ -4,8 +4,6 @@
 </footer>
 </body>
 <script>
-
-    document.getElementById("username").innerHTML = "Witaj, " + getCookieValue("name") + "!" || "Witaj, użytkowniku!";
-
+    document.getElementById("username").innerHTML = getCookieValue("name") ? "Witaj, " + getCookieValue("name") + "!" : "Witaj, użytkowniku!";
 </script>
 </html>
