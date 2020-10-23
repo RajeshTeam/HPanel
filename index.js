@@ -27,7 +27,9 @@ app.get('/videos', async (req, res) => {
         videos: await tools.readAllChannels()
     });
 });
-
+app.get('/about', async (req, res) => {
+    res.render("about.ejs");
+});
 app.get('/corona', async (req, res) => {
     const stats = JSON.parse(await fs.readFileSync("./data/corona.json"));
     res.render("corona.ejs", {

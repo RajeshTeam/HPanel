@@ -1,6 +1,6 @@
 {
-  "name": "koronapanel",
-  "version": "0.0.4",
+  "name": "healthpanel",
+  "version": "0.0.8",
   "description": "Źródło wyselekcjonowanych informacji i ciekawostek o zdrowiu fizycznym i psychicznym.",
   "main": "index.js",
   "scripts": {
