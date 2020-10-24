@@ -11,14 +11,15 @@ const client = new Twitter({        //definiujemy klienta Twittera, pobieranie i
 });
 const channels = require("./data/channels.json");
 const colors = {
-    0: "#000000",
-    1: "#d11204",
-    2: "#d17804",
+    6: "#000000",
+    5: "#d11204",
+    4: "#d17804",
     3: "#f7e700",
-    4: "#bcd104",
-    5: "#6bd104"
+    2: "#bcd104",
+    1: "#6bd104",
+    0: "#008000"
 };
-
+// z tymi kolorami to ja strzelam że jest zakres 0-6 bo po co komu docsy...
 module.exports = {
     refreshMZGOV: function () {
         try {
