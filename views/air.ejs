@@ -41,7 +41,7 @@
 <script>
     const getData = async function (a) {
         a = a.coords;
-        let resp = await fetch(`http://${window.location.host}/airData?lat=${a.latitude}&lon=${a.longitude}`);
+        let resp = await fetch(`${window.location.protocol}//${window.location.host}/airData?lat=${a.latitude}&lon=${a.longitude}`);
         let data = await resp.json();
         document.getElementById("station").innerHTML = `Stacja:<br> ${data.station || "brak danych"}`;
         document.getElementById("overall").innerHTML = `Stan ogólny: ${data.overall || "brak danych"}`;

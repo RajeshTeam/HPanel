@@ -135,7 +135,7 @@ module.exports = {
             return a.distance - b.distance;
         });
         const nearestID = calculated[0].id;
-        let data = await fetch(`http://api.gios.gov.pl/pjp-api/rest/aqindex/getIndex/${nearestID}`);
+        let data = await fetch(`https://api.gios.gov.pl/pjp-api/rest/aqindex/getIndex/${nearestID}`);
         if (data.status !== 200) return;
         data = await data.json();
         return {
