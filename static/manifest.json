@@ -4,12 +4,12 @@
   "display": "fullscreen",
   "icons": [
     {
-      "src": "/logo512.png",
+      "src": "./logo512.png",
       "sizes": "512x512",
       "type": "image/png"
     },
     {
-      "src": "/logo900.png",
+      "src": "./logo900.png",
       "sizes": "900x900",
       "type": "image/png"
     }
