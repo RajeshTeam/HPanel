@@ -11,6 +11,6 @@
   ],
   "name": "HealthPanel",
   "short_name": "HealthPanel",
-  "start_url": "index",
+  "start_url": "../index",
   "scope": "."
 }
