@@ -4,8 +4,13 @@
   "display": "fullscreen",
   "icons": [
     {
-      "src": "static/logo.svg",
-      "sizes": "288x288",
+      "src": "static/logo512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "static/logo900.png",
+      "sizes": "900x900",
       "type": "image/png"
     }
   ],
