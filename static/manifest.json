@@ -60,7 +60,7 @@
     }
   ],
   "name": "HealthPanel",
-  "short_name": "HealthPanel",
+  "short_name": "HPanel",
   "start_url": "../",
   "scope": "."
 }
