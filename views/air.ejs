@@ -1,0 +1,56 @@
+<%- include ("../partials/head.ejs") %>
+<%- include ("../partials/navbar.ejs") %>
+
+<section>
+
+    <div class="container">
+        <div class="row" style="margin-top: 5rem">
+            <div class="grid-item col-md-8 mb-4">
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <h1 class="card-title" id="station">Prosimy, zezwól w przeglądarce na dane o lokalizacji!</h1>
+                        <h1 class="card-text text-white">Dane dotyczące konkretnych pierwiastków zawartych w
+                            powietrzu:</h1>
+                        <br>
+                        <h1 class="card-text text-white" id="so2">Dwutlenek siarki (SO2): </h1>
+                        <h1 class="card-text text-white" id="no2">Dwutlenek azotu (NO2): </h1>
+                        <h1 class="card-text text-white" id="co">Tlenek węgla (CO): </h1>
+                        <h1 class="card-text text-white" id="pm10">Pyły PM10: </h1>
+                        <h1 class="card-text text-white" id="o3">Ozon (O3): </h1>
+                        <br><br>
+                        <h1 class="card-text text-white">Źródło danych: API GIOŚ</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item col-md-4 mb-4">
+                <div class="card bg-dark text-white">
+                    <div class="card-body align-items-center align-content-center">
+                        <span style="height: 10rem;width: 10rem;background-color: #bbb;border-radius: 50%;display: table;margin: 0 auto"
+                              id="circle"></span>
+                        <br>
+                        <h1 class="text-white text-center" id="overall">Stan ogólny: </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<%- include ("../partials/footer.ejs") %>
+<script>
+    const getData = async function (a) {
+        a = a.coords;
+        let resp = await fetch(`http://${window.location.host}/airData?lat=${a.latitude}&lon=${a.longitude}`);
+        let data = await resp.json();
+        document.getElementById("station").innerHTML = `Stacja:<br> ${data.station || "brak danych"}`;
+        document.getElementById("overall").innerHTML = `Stan ogólny: ${data.overall || "brak danych"}`;
+        document.getElementById("so2").innerHTML = `Dwutlenek siarki (SO2): ${data.so2 || "brak danych"}`;
+        document.getElementById("no2").innerHTML = `Dwutlenek azotu (NO2): ${data.no2 || "brak danych"}`;
+        document.getElementById("co").innerHTML = `Tlenek węgla (CO): ${data.co || "brak danych"}`;
+        document.getElementById("pm10").innerHTML = `Pyły PM10: ${data.pm10 || "brak danych"}`;
+        document.getElementById("o3").innerHTML = `Ozon (O3): ${data.o3 || "brak danych"}`;
+        document.getElementById("circle").style.backgroundColor = data.overallCol;
+    };
+    window.navigator.geolocation.getCurrentPosition(getData, console.log);
+</script>

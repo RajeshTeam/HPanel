@@ -21,7 +21,7 @@ if (target) {
         }, {strokeStyle: "#F03E3E", min: 3501, max: 5e3}],
         lineWidth: .24,
         radiusScale: 1,
-        pointer: {length: .56, strokeWidth: .086, color: "#000000"},
+        pointer: {length: .56, strokeWidth: .086, color: "#ffffff"},
         limitMax: !1,
         limitMin: !1,
         colorStart: "#6FADCF",

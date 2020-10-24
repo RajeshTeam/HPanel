@@ -10,6 +10,14 @@ const client = new Twitter({        //definiujemy klienta Twittera, pobieranie i
     bearer_token: config.bearer_token
 });
 const channels = require("./data/channels.json");
+const colors = {
+    0: "#000000",
+    1: "#d11204",
+    2: "#d17804",
+    3: "#f7e700",
+    4: "#bcd104",
+    5: "#6bd104"
+};
 
 module.exports = {
     refreshMZGOV: function () {
@@ -103,5 +111,62 @@ module.exports = {
             newChannels.push(JSON.parse(await fs.readFileSync(`./data/${id}.json`)));
         }
         return newChannels;
+    },
+    getAllAirData: async function () {
+        let data = await fetch(`https://api.gios.gov.pl/pjp-api/rest/station/findAll`);
+        if (data.status !== 200) return;
+        data = await data.json();
+        airdata = data;
+    },
+    calculateNearestAndGetData: async function (lat = "52.1356", lon = "21.0030") { //Warszawa domyślnie
+        let distances = [];
+        airdata.forEach(data => {
+            distances.push({
+                distance: this.calculateDistance({
+                    lat1: lat,
+                    lon1: lon,
+                    lat2: data.gegrLat,
+                    lon2: data.gegrLon,
+                    stationID: data.id
+                }), id: data.id
+            });
+        });
+        const calculated = distances.sort(function (a, b) {
+            return a.distance - b.distance;
+        });
+        const nearestID = calculated[0].id;
+        let data = await fetch(`http://api.gios.gov.pl/pjp-api/rest/aqindex/getIndex/${nearestID}`);
+        if (data.status !== 200) return;
+        data = await data.json();
+        return {
+            overall: data.stIndexLevel?.indexLevelName,
+            overallCol: colors[data.stIndexLevel?.id.toString()],
+            so2: data.so2IndexLevel?.indexLevelName,
+            no2: data.no2IndexLevel?.indexLevelName,
+            co: data.coIndexLevel?.indexLevelName,
+            pm10: data.pm10IndexLevel?.indexLevelName,
+            o3: data.o3IndexLevel?.indexLevelName,
+            station: airdata.find(x => x.id === data.id).stationName,
+        };
+    },
+    calculateDistance: function ({lat1 = "52.1356", lon1 = "21.0030", lat2, lon2, unit = "K"}) { //Warszawa domyślnie
+        const radlat1 = Math.PI * lat1 / 180;
+        const radlat2 = Math.PI * lat2 / 180;
+        const theta = lon1 - lon2;
+        const radtheta = Math.PI * theta / 180;
+        let dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+        if (dist > 1) {
+            dist = 1;
+        }
+        dist = Math.acos(dist);
+        dist = dist * 180 / Math.PI;
+        dist = dist * 60 * 1.1515;
+        if (unit === "K") {
+            dist = dist * 1.609344;
+        }
+        if (unit === "N") {
+            dist = dist * 0.8684;
+        }
+        return dist;
     }
 };
