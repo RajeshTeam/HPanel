@@ -1,0 +1,15 @@
+{
+  "background_color": "green",
+  "description": "Źródło wyselekcjonowanych informacji i ciekawostek o zdrowiu fizycznym i psychicznym.",
+  "display": "fullscreen",
+  "icons": [
+    {
+      "src": "static/logo.svg",
+      "sizes": "192x192",
+      "type": "image/svg"
+    }
+  ],
+  "name": "HealthPanel",
+  "short_name": "HealthPanel",
+  "start_url": "index"
+}
