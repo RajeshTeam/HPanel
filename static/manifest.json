@@ -5,11 +5,12 @@
   "icons": [
     {
       "src": "static/logo.svg",
-      "sizes": "192x192",
-      "type": "image/svg"
+      "sizes": "288x288",
+      "type": "image/png"
     }
   ],
   "name": "HealthPanel",
   "short_name": "HealthPanel",
-  "start_url": "index"
+  "start_url": "index",
+  "scope": "."
 }
