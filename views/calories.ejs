@@ -1,0 +1,60 @@
+<%- include ("../partials/head.ejs") %>
+<%- include ("../partials/navbar.ejs") %>
+
+<section>
+
+    <div class="container">
+        <div class="row" style="margin-top: 5rem">
+            <div class="grid-item col-sm-12 col-md-8 col-xs-12 mb-4">
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <h2 class="card-title bg-dark">Dodaj produkt lub posiłek</h2>
+                        <form class="col bg-dark">
+                            <div class="row">
+                                <div class="input-field col-sm-6">
+                                    <input type="text" placeholder="Nazwa posiłku" id="item-name">
+                                    <label for="item-name">Posiłek</label>
+                                </div>
+                                <div class="input-field col-sm-6">
+                                    <input type="number" placeholder="Wpisz ilość kilokalorii" id="item-calories">
+                                    <label for="item-calories">Kilokalorie</label>
+                                </div>
+                                <button class="btn btn-primary add-btn w-100"><i class="fa fa-plus"></i> Dodaj posiłek
+                                </button>
+                                <button class="btn btn-secondary update-btn"><i class="fas fa-edit"></i> Zaktualizuj
+                                    posiłek
+                                </button>
+                                <button class="btn btn-danger delete-btn"><i class="fas fa-trash"></i> Usuń posiłek
+                                </button>
+                                <button class="back-btn btn grey pull-right"><i
+                                            class="fa fa-chevron-circle-left"></i> Cofnij
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <ul id="item-list" class="collection">
+                    </ul>
+                </div>
+            </div>
+
+            <div class="grid-item col-xs-4 mb-4">
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <h1 class="card-title text-center"><span id="gauge-value"></span> Kcal</h1>
+                        <canvas id="gauge"
+                                style=" padding-left: 0;padding-right: 0;margin-left: auto;margin-right: auto;display: block;"></canvas>
+                        <button class="clear-btn btn btn-danger btn-block"><i class="fas fa-trash"></i> Usuń wszystkie
+                            posiłki
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<%- include ("../partials/footer.ejs") %>
+<script>
+
+
+</script>

@@ -22,6 +22,9 @@ app.get('/', async (req, res) => {
 app.get('/timer', async (req, res) => {
     res.render("timer.ejs");
 });
+app.get('/calories', async (req, res) => {
+    res.render("calories.ejs");
+});
 app.get('/videos', async (req, res) => {
     res.render("videos.ejs", {
         videos: await tools.readAllChannels()
