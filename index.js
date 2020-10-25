@@ -60,6 +60,9 @@ app.get('/corona', async (req, res) => {
         lastTime: stats.lastTime
     });
 });
+app.get('*', (req, res) => {
+    res.redirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ"); //hyhy
+});
 
 app.listen(config.port, () => {
     console.log(`App running on localhost:${config.port}`);

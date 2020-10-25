@@ -106,49 +106,61 @@ module.exports = {
         }
     },
     readAllChannels: async function () {
-        const channels = require("./data/channels.json");
-        let newChannels = [];
-        for (const id of channels.IDs) {
-            newChannels.push(JSON.parse(await fs.readFileSync(`./data/${id}.json`)));
+        try {
+            const channels = require("./data/channels.json");
+            let newChannels = [];
+            for (const id of channels.IDs) {
+                newChannels.push(JSON.parse(await fs.readFileSync(`./data/${id}.json`)));
+            }
+            return newChannels;
+        } catch (e) {
+            console.log(e);
         }
-        return newChannels;
     },
     getAllAirData: async function () {
-        let data = await fetch(`https://api.gios.gov.pl/pjp-api/rest/station/findAll`);
-        if (data.status !== 200) return;
-        data = await data.json();
-        airdata = data;
+        try {
+            let data = await fetch(`https://api.gios.gov.pl/pjp-api/rest/station/findAll`);
+            if (data.status !== 200) return;
+            data = await data.json();
+            airdata = data;
+        } catch (e) {
+            console.log(e);
+        }
     },
     calculateNearestAndGetData: async function (lat = "52.1356", lon = "21.0030") { //Warszawa domyślnie
-        let distances = [];
-        airdata.forEach(data => {
-            distances.push({
-                distance: this.calculateDistance({
-                    lat1: lat,
-                    lon1: lon,
-                    lat2: data.gegrLat,
-                    lon2: data.gegrLon,
-                    stationID: data.id
-                }), id: data.id
+        try {
+            let distances = [];
+            airdata.forEach(data => {
+                distances.push({
+                    distance: this.calculateDistance({
+                        lat1: lat,
+                        lon1: lon,
+                        lat2: data.gegrLat,
+                        lon2: data.gegrLon,
+                        stationID: data.id
+                    }), id: data.id
+                });
             });
-        });
-        const calculated = distances.sort(function (a, b) {
-            return a.distance - b.distance;
-        });
-        const nearestID = calculated[0].id;
-        let data = await fetch(`https://api.gios.gov.pl/pjp-api/rest/aqindex/getIndex/${nearestID}`);
-        if (data.status !== 200) return;
-        data = await data.json();
-        return {
-            overall: data.stIndexLevel?.indexLevelName,
-            overallCol: colors[data.stIndexLevel?.id.toString()],
-            so2: data.so2IndexLevel?.indexLevelName,
-            no2: data.no2IndexLevel?.indexLevelName,
-            co: data.coIndexLevel?.indexLevelName,
-            pm10: data.pm10IndexLevel?.indexLevelName,
-            o3: data.o3IndexLevel?.indexLevelName,
-            station: airdata.find(x => x.id === data.id).stationName,
-        };
+            const calculated = distances.sort(function (a, b) {
+                return a.distance - b.distance;
+            });
+            const nearestID = calculated[0].id;
+            let data = await fetch(`https://api.gios.gov.pl/pjp-api/rest/aqindex/getIndex/${nearestID}`);
+            if (data.status !== 200) return;
+            data = await data.json();
+            return {
+                overall: data.stIndexLevel?.indexLevelName,
+                overallCol: colors[data.stIndexLevel?.id.toString()],
+                so2: data.so2IndexLevel?.indexLevelName,
+                no2: data.no2IndexLevel?.indexLevelName,
+                co: data.coIndexLevel?.indexLevelName,
+                pm10: data.pm10IndexLevel?.indexLevelName,
+                o3: data.o3IndexLevel?.indexLevelName,
+                station: airdata.find(x => x.id === data.id).stationName,
+            };
+        } catch (e) {
+            console.log(e);
+        }
     },
     calculateDistance: function ({lat1 = "52.1356", lon1 = "21.0030", lat2, lon2, unit = "K"}) { //Warszawa domyślnie
         const radlat1 = Math.PI * lat1 / 180;
