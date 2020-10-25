@@ -3,7 +3,8 @@ const tools = require('./tools');
 const app = express();
 const config = require("./config.json");
 const fs = require("fs");
-
+let tips = require("./data/tips.json");
+tips = tips.tips; //boli jak na to patrzę
 app.set('view engine', 'ejs');
 app.engine("html", require("ejs").renderFile);
 app.use('/static', express.static('./static'));
@@ -20,7 +21,12 @@ tools.getAllAirData();
 setInterval(tools.getAllAirData, 1000 * 60 * 60 * 3); //co 3 godziny wystarczy
 //endpointy strony
 app.get('/', async (req, res) => {
-    res.render("index.ejs");
+    const tip = tips[Math.floor(Math.random() * tips.length)];
+    res.render("index.ejs", {
+        tipContent: tip.content,
+        tipType: tip.author ? "Losowy cytat" : "Losowa wskazówka",
+        tipAuthor: tip.author
+    });
 });
 app.get('/timer', async (req, res) => {
     res.render("timer.ejs");

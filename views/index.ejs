@@ -18,17 +18,27 @@
                     </div>
                 </div>
             </div>
-            <div class="grid-item col-md-6 mb-4">
-                <div class="card">
-                    <div class="card-header">
-                        Quote
+            <div class="grid-item col-md-4 mb-4">
+                <div class="card bg-dark">
+                    <div class="card-header text-white">
+                        <%= tipType %>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body bg-dark">
                         <blockquote class="blockquote mb-0">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                            <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source
-                                    Title</cite></footer>
+                            <p class="text-white"><%= tipContent %></p>
+                            <% if(tipAuthor) { %>
+                                <footer class="blockquote-footer"><%= tipAuthor %></footer>
+                            <% } %>
                         </blockquote>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item col-md-2 mb-4">
+                <div class="card bg-dark">
+                    <div class="card-body">
+                        <p class="white-text">Dodaj aplikację HealthPanel!</p>
+                        <a href="/air" class="btn btn-outline-success"><b>Pokaż</b></a>
+                        <pwa-install></pwa-install>
                     </div>
                 </div>
             </div>
