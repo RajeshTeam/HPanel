@@ -59,8 +59,39 @@
       "type": "image/png"
     }
   ],
+  "screenshots": [
+    {
+      "src": "./screen1.jpg",
+      "sizes": "720x1520",
+      "type": "image/jpg"
+    },
+    {
+      "src": "./screen2.jpg",
+      "sizes": "720x1520",
+      "type": "image/jpg"
+    },
+    {
+      "src": "./screen3.jpg",
+      "sizes": "720x1520",
+      "type": "image/jpg"
+    }
+  ],
   "name": "HealthPanel",
   "short_name": "HPanel",
   "start_url": "../",
-  "scope": "."
+  "scope": ".",
+  "shortcuts": [
+    {
+      "name": "Koronawirus statystyki",
+      "short_name": "Koronawirus",
+      "description": "Statystyki koronawirusa w Polsce",
+      "url": "../corona"
+    },
+    {
+      "name": "Smog",
+      "short_name": "Smog",
+      "description": "Sprawdź powietrze w swojej okolicy",
+      "url": "../air"
+    }
+  ]
 }
