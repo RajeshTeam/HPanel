@@ -8,13 +8,6 @@ Aplikacja na konkurs HackHeroes - HealthPanel
 - Wklepujemy kolejno:
   - git clone https://github.com/RajeshTeam/HPanel (wyświetli komunikat o podaniu hasła itd. Kopiuje to repo tego kodu)
   - cd HPanel
-  - nvm install 14.13.1 (instalujemy tym Node, łatwo i przyjemnie)
+  - nvm install 15.0.1 (instalujemy tym Node, łatwo i przyjemnie)
   - npm install (komenda npm, która pobiera paczki dla naszej apki
 - Żeby odpalić apkę, wpisujemy "node index.js". Apka będzie widoczna, gdy w przeglądarce w pasku adresu wpiszemy "localhost:8080".
-- Edytujcie apkę czymkolwiek, może być Paintem.
-- Jeżeli wasz edytor nie ogarnia Gita lub jest to dla was nieczytelne, wysyłanie zmian robi się tak:
-  - git add . (dodaje wszystkie pliki)
-  - git commit -m "Aktualizacja" (wykonuje tzw. commit + dodaje nazwe, pls nazywajcie commity jakoś sensownie)
-  - git push (wysyła zmiany ostatecznie)
-- Jeżeli chcecie pobrać zmiany, to wystarczy ciepnąć "git pull".
-- Jak coś nie działa, piszcie do Rajesha.
